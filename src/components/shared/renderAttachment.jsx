@@ -1,6 +1,6 @@
 import React from 'react'
 import { transformImage } from '../../lib/features'
-import fileMenu from '../dialog/fileMenu'
+import FileMenu from '../dialog/FileMenu'
 
 const renderAttachment = (file,url) => {
  
@@ -14,7 +14,7 @@ const renderAttachment = (file,url) => {
         return <audio src={transformImage(url,200)}preload='none' controls/>
 
     else{
-        return <fileMenu/>
+        return <FileMenu/>
     }
   
 }
