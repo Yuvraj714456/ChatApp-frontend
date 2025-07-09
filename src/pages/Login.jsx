@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import {useInputValidation} from '6pp'
-import { userNameValidator } from '../lib/validator';
-import { server } from '../constant/config';
+import { useInputValidation } from '6pp';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { userExists } from '../redux/reducers/auth';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { server } from '../constant/config';
 import AvatarUpload from '../lib/AvatarUpload';
+import { userNameValidator } from '../lib/validator';
 
 const Login = () => {
     const [isLogin,setIsLogin] = useState(true); 
@@ -19,7 +18,6 @@ const Login = () => {
     const password = useInputValidation("");
     const confirmPassword = useInputValidation();
 
-    const dispatch = useDispatch();
 
     const handleLogIn = async (e)=>{
         e.preventDefault();
