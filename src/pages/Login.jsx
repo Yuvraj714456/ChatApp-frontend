@@ -42,7 +42,6 @@ const Login = () => {
                     dispatch(userExists(data.user))
 
                     toast.success(data.message,{id:toastId});
-                    window.location.href="/";
          }catch (error) {
             toast.error(error?.response?.data?.message || "Something went wrong",{id:toastId});
          }finally{
