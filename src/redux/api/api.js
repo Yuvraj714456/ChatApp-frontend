@@ -3,31 +3,31 @@ import { server } from '../../constant/config';
 
 const api = createApi({
     reducerPath:"api",
-    baseQuery:fetchBaseQuery({baseUrl:`${server}/api/v1/`}),
+    baseQuery:fetchBaseQuery({
+                baseUrl:`${server}/api/v1/`,
+                credentials:'include'}),
     tagTypes:["Chat","User","Message",'Admin'],
 
     endpoints:(builder)=>({
        getProfile:builder.mutation({
             query:()=>({
                 url:'user/get-profile',
-                method:"Get",
-                credentials:'include'
+                method:"Get"
             }),
             providesTags:["User"]
 
        }), 
        myChats:builder.query({
         query:()=>({
-            url:"chat/getmychats",
-            credentials:"include"
+            url:"chat/getmychats"   
         }),
         providesTags:["Chat"]
        }),
 
        searchUser:builder.query({
             query:(name)=>({
-               url:`user/search?name=${name}`,
-               credentials:"include",
+               url:`user/search?name=${name}`
+
             }),
             providesTags:["User"]
        }),
@@ -36,7 +36,6 @@ const api = createApi({
             query:(data)=>({
                 url:"user/sendrequest",
                 method:"PUT",
-                credentials:'include',
                 body:data,
             }),
             invalidatesTags:["User"]
@@ -45,7 +44,7 @@ const api = createApi({
        getNotification:builder.query({
             query:()=>({
                url:`user/notifications`,
-               credentials:"include",
+
             }),
             keepUnusedDataFor:0,
        }),
@@ -54,7 +53,7 @@ const api = createApi({
             query:({ requestId, handle})=>({
                 url:"user/handlerequest",
                 method:"PUT",
-                credentials:"include",
+
                 body:{requestId,handle},
             }),
             invalidatesTags:["Chat"]
@@ -67,7 +66,7 @@ const api = createApi({
                 
                 return {
                     url,
-                    credentials:"include",
+    
                 }
             },
             providesTags:["Chat"],
@@ -75,8 +74,7 @@ const api = createApi({
 
        getMessages:builder.query({
             query:({chatId,page})=>({
-                url:`chat/message/${chatId}?page=${page}`,
-                credentials:'include'
+                url:`chat/message/${chatId}?page=${page}`
             }),
             keepUnusedDataFor:0,
        }),
@@ -85,7 +83,7 @@ const api = createApi({
             query:({data})=>({
                 url:"chat/message",
                 method:"POST",
-                credentials:"include",
+
                 body:data,
             }),
        }),
@@ -96,8 +94,7 @@ const api = createApi({
                 if (chatId) url+=`?chatId={chatId}`
                 return {
                     url,
-                    credentials:"include"
-                }
+                    }
             },
             providesTags:["User"],
        }),
@@ -106,7 +103,7 @@ const api = createApi({
             query:({name,members})=>({
                 url:"chat/newgroup",
                 method:"POST",
-                credentials:"include",
+
                 body:{name,members},
             }),
             invalidatesTags:["Chat"]
@@ -116,7 +113,7 @@ const api = createApi({
             query:({chatId,name})=>({
                 url:`chat/${chatId}`,
                 method:"PUT",
-                credentials:"include",
+
                 body:{name}
             }),
             invalidatesTags:['Chat']
@@ -126,7 +123,7 @@ const api = createApi({
             query:({chatId,userId})=>({
                 url:`chat/removemembers`,
                 method:"PUT",
-                credentials:"include",
+
                 body:{chatId,userId}
             }),
             invalidatesTags:['Chat']
@@ -138,7 +135,7 @@ const api = createApi({
             query:({chatId,members})=>({
                 url:`chat/addmembers`,
                 method:"PUT",
-                credentials:"include",
+
                 body:{chatId,members}
             }),
             invalidatesTags:['Chat']
@@ -148,7 +145,7 @@ const api = createApi({
             query:(chatId)=>({
                 url:`chat/${chatId}`,
                 method:"DELETE",
-                credentials:"include",
+
             }),
             invalidatesTags:['Chat']
        }),
@@ -157,7 +154,7 @@ const api = createApi({
             query:(chatId)=>({
                 url:`chat/leave/${chatId}`,
                 method:"DELETE",
-                credentials:"include",
+
             }),
             invalidatesTags:['Chat']
        }),
@@ -167,7 +164,7 @@ const api = createApi({
             query:({username,password})=>({
                 url:'admin/verify',
                 method:"POST",
-                credentials:"include",
+
                 body:{username,password}
             }),
             invalidatesTags:["Admin"]
@@ -177,7 +174,6 @@ const api = createApi({
             query:()=>({
                 url:'admin/',
                 method:"GET",
-                credentials:"include"
             }),
             invalidatesTags:["Admin"]
        }),
@@ -186,7 +182,6 @@ const api = createApi({
             query:()=>({
                 url:'admin/logout',
                 method:"GET",
-                credentials:"include"
             }),
             invalidatesTags:["Admin"]
        }),
@@ -195,7 +190,6 @@ const api = createApi({
             query:()=>({
                 url:'admin/users',
                 method:"GET",
-                credentials:"include"
             }),
             invalidatesTags:["Admin"]
        }),
@@ -204,7 +198,6 @@ const api = createApi({
             query:()=>({
                 url:'admin/stats',
                 method:"GET",
-                credentials:"include"
             }),
             invalidatesTags:["Admin"]
        }),

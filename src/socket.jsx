@@ -11,7 +11,9 @@ const useSocket = () => useContext(SocketContext);
 const SocketProvider = ({ children }) => {
 
    if(!socket){
-    socket = io(server,{withCredentials:true});
+    socket = io(server,{
+      transports: ["websocket", "polling"],
+      withCredentials:true});
     socket.on("connection",()=>{
         console.log("socket connected".socket.id);
     })

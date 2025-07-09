@@ -14,10 +14,6 @@ const Header = () => {
 
     const {user} = useSelector(state=>state.auth);
 
-    console.log(user.avatar);
-
-
-
     const onOpenSearch = ()=>{
         dispatch(setIsSearch(!isSearch));
     }

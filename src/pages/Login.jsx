@@ -6,12 +6,15 @@ import { useDispatch } from 'react-redux';
 import { server } from '../constant/config';
 import AvatarUpload from '../lib/AvatarUpload';
 import { userNameValidator } from '../lib/validator';
+import { userExists } from '../redux/reducers/auth';
 
 const Login = () => {
     const [isLogin,setIsLogin] = useState(true); 
     const [avatar,setAvatar] = useState(null);
 
     const [isLoading,setIsLoading] = useState(false);
+
+    const dispatch = useDispatch();
 
     const name = useInputValidation("");
     const userName = useInputValidation("",userNameValidator);
@@ -35,6 +38,8 @@ const Login = () => {
                         username:userName.value,
                         password:password.value
                     },config);
+
+                    dispatch(userExists(data.user))
 
                     toast.success(data.message,{id:toastId});
                     window.location.href="/";
@@ -71,7 +76,7 @@ const Login = () => {
                             formData,
                             config);
             toast.success(data.message,{id:toastId});
-            window.location.href="/";
+            dispatch(userExists(data.user));
         } catch(error) {
             toast.error(error?.response?.data?.message,{id:toastId});
         }finally{

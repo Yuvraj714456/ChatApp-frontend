@@ -28,6 +28,13 @@ const App = () => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    document.cookie.includes("chat-token")
+      ? console.log("✅ Cookie present")
+      : console.warn("❌ Cookie missing");
+  }, []);
+
+
   useEffect(()=>{
     const getData= async ()=>{
       try {

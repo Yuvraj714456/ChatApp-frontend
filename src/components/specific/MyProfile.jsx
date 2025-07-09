@@ -1,26 +1,3 @@
-// // import React from 'react'
-
-// // const MyProfile = () => {
-
-
-// //   const handleLogOut= async()=>{
-// //         try {
-// //             await axios.get(`${server}/api/v1/user/logout`,{withCredentials:true});
-// //             dispatch(userNotExists());
-// //             toast.success("Logout Successfully");
-// //         } catch (error) {
-// //             toast.error(error?.response?.data?.message || "Something went wrong");
-// //         }
-// //     }
-// //   return (
-// //     <div>MyProfile</div>
-// //   )
-// // }
-
-// // export default MyProfile
-
-
-
 import axios from 'axios';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -45,20 +22,14 @@ const MyProfile = () => {
       await axios.get(`${server}/api/v1/user/logout`, { withCredentials: true });
       dispatch(userNotExists());
       toast.success('Logout Successfully');
+      window.location.href="/";
     } catch (error) {
       toast.error(error?.response?.data?.message || 'Something went wrong');
     }
   };
 
-  const handleDeleteAccount = () => {
-    const confirmDelete = window.confirm(
-      'Are you sure you want to delete your account? This action cannot be undone.'
-    );
-    if (confirmDelete) {
-      console.log('Account deleted');
-      onClose();
-    }
-  };
+  
+
 
   const onClose = () => {
     dispatch(setIsMyProfile(!isMyProfile));
@@ -92,12 +63,7 @@ const MyProfile = () => {
           >
             Logout
           </button>
-          <button
-            onClick={handleDeleteAccount}
-            className="w-full py-2 rounded-md bg-red-500 hover:bg-red-600 text-white font-medium"
-          >
-            Delete My Account
-          </button>
+          
         </div>
       </div>
     </div>
