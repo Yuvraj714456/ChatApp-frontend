@@ -37,7 +37,7 @@ const MyProfile = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-40 ">
-      <div className=" text-white w-[90%] bg-gray-900 max-w-md p-6 rounded-xl shadow-xl relative">
+      <div className="text-gray-400 w-[90%] bg-gray-900 max-w-md p-6 rounded-xl shadow-xl relative">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold">My Profile</h2>

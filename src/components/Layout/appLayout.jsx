@@ -69,10 +69,10 @@ const appLayout = () => (WrappedComponent)=>{
 
         useSocketEvents(socket,eventHandlers);
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen bg-[#0f0f0f]">
             <Header/>
             <div className="flex flex-1 overflow-hidden">
-                {!isMobile && <div className="w-[30.33%] min-w-[375px] h-full bg-[#F0F0F0] block sm:hidden lg:hidden">
+                {!isMobile && <div className="w-[30.33%]  h-full bg-[#F0F0F0] block sm:hidden lg:hidden">
                         {
                             isLoading?<div>Loading...</div>:<ChatList 
                                                                 chats={data?.message} 
@@ -82,14 +82,14 @@ const appLayout = () => (WrappedComponent)=>{
                         }
                         </div>
                 }
-                <div className='hidden sm:block lg:block w-[30.33%] min-w-[375px] bg-[#F0F0F0]'>
+                <div className='hidden sm:block lg:block w-[30.33%] bg-[#F0F0F0]'>
                     {isLoading?<div>Loading...</div>:<ChatList
                             chats={data?.message} 
                             chatId={chatId} 
                             newMessagesAlert={newMessagesAlert}
                    />}
                 </div>
-                <div className="flex-1 bg-white overflow-y-auto w-full">
+                <div className="flex-1 bg-[#1a1a1a] text-gray-500 overflow-y-auto w-full">
                             <WrappedComponent {...props} chatId={chatId} user={user}/>
                 </div>
             </div>

@@ -166,7 +166,7 @@ const Chat = ({chatId,user}) => {
   
 
   return chatDetails.isLoading?<div>Loading...</div>:(
-    <div className="flex flex-col  w-full h-full bg-[#F0F0F0] text-black p-4 overflow-hidden">
+    <div className="flex flex-col  w-full h-full bg-[#1a1a1a] text-white p-4 overflow-hidden">
       {/* Message */}
       <div ref={containerRef} className="flex-1 overflow-y-auto mb-4">
         {/* Example message - replace with dynamic data */}

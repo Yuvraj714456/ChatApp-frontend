@@ -37,7 +37,7 @@ const Header = () => {
     }
 
   return (
-    <div className="w-full bg-[#F0F0F0] text-black p-4 shadow-md sticky top-0 z-20 border-b border-gray-700/50">
+    <div className="w-full bg-[#252525] text-gray-300 p-4 shadow-md sticky top-0 z-20 border-b border-gray-700/50">
         <div className="container mx-auto flex justify-between items-center">
             <div className='flex items-center'>
                 <div className="hidden sm:block text-2xl font-bold tracking-tight hover:text-app-accent transition-colors duration-200 cursor-pointer">Chat App</div>  

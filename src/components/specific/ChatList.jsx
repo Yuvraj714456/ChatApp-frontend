@@ -47,14 +47,14 @@ const ChatList = ({chats=[],
   
   return (
     <aside 
-      className={`h-full flex flex-col  bg-[#F0F0F0] shadow-lg z-10 w-[30.3%] border-r border-gray-700/50 min-w-[375px]`}
+      className={`h-full flex flex-col  bg-[#1e1e1e] text-gray-400 shadow-lg z-10 w-[30.3%] border-r border-gray-700/50 min-w-[470px]`}
       style={{
         fontFamily: 'Manrope, "Noto Sans", sans-serif',
          // Use pixel width if resizing, else prop
         }}
       overflow={"auto"}
       >
-        <div className='flex-1 overflow-y-auto p-4'>
+        <div className='flex-1 overflow-y-auto'>
           {
               chats?.map((data,index)=>{
                   const {avatar,name,_id,isGroup,members}=data;
