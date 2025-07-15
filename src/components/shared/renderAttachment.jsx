@@ -1,6 +1,4 @@
-import React from 'react'
 import { transformImage } from '../../lib/features'
-import FileMenu from '../dialog/FileMenu'
 
 const renderAttachment = (file,url) => {
  
@@ -14,7 +12,17 @@ const renderAttachment = (file,url) => {
         return <audio src={transformImage(url,200)}preload='none' controls/>
 
     else{
-        return <FileMenu/>
+        return (
+                <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="text-white underline hover:text-gray-300"
+                >
+                📄 Download File
+                </a>
+            );
     }
   
 }

@@ -120,7 +120,6 @@ const Chat = ({chatId,user}) => {
   const newMessagesListener = useCallback((data)=>{
     if(data.chatId !== chatId) return;
     setMessages((prev)=>[...prev,data.message]);
- 
   },[chatId]);
 
   const startTypingListener = useCallback((data)=>{
@@ -183,17 +182,19 @@ const Chat = ({chatId,user}) => {
       </div>
       <form style={{height:"10%"}} onSubmit={handleSubmit} className="flex items-center h-12 border-2 border-gray-600 rounded-md p-1 bg-gray-700">
 
-          {
-            isFileMenu && (
-              <div className='absolute bottom-20 left-4 z-50 mb-2'>
-                <FileMenu chatId={chatId}/>
-              </div>
-            )
-          }
+          <div className='relative mr-2'>
+            <button type="button" onClick={handleFileOpen} className=" text-white">
+                  <GrAttachment size={20} />
+              </button>
 
-          <button type="button" onClick={handleFileOpen} className="mr-2 text-white">
-              <GrAttachment size={20} />
-          </button>
+            {
+                isFileMenu && (
+                  <div className='absolute bottom-10 z-50 mb-2'>
+                    <FileMenu chatId={chatId}/>
+                  </div>
+                )
+              }
+          </div>
 
           <input type="text" 
                   value={message}
